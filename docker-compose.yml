@@ -1,0 +1,15 @@
+version: '2'
+services:
+  db:
+    image: postgres
+    container_name: foodtruck_radar_postgres
+    ports:
+      - 54321:5432
+    volumes:
+      - ./provision/db/:/docker-entrypoint-initdb.d
+    env_file:
+      - .env
+  redis:
+    image: redis
+    ports:
+      - 63791:6379
