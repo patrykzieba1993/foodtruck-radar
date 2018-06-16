@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Rest API for foodtruck radar app",
   "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "start": "node index.js"
   },
   "engines": {
@@ -10,6 +12,13 @@
   },
   "author": "patrykzieba1993",
   "license": "UNLICENSED",
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-mocha": "^5.0.0",
+    "eslint-plugin-security": "^1.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0"
+  }
 }
