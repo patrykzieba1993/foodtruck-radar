@@ -7,3 +7,7 @@ Project setup
 - `docker-compose up -d`
 - `npm run migrate-database`
 - `npm run dev`
+
+Documentation
+----------
+http://localhost:3000/docs
