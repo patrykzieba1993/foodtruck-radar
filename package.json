@@ -5,7 +5,9 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "export NODE_ENV=test CACHE_ENABLED=false && npm run lint:fix && mocha --recursive",
+    "test:nolint": "export NODE_ENV=test CACHE_ENABLED=false && mocha --recursive"
   },
   "engines": {
     "node": "8.9.3"
@@ -19,6 +21,7 @@
   },
   "devDependencies": {
     "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^16.1.0"
+    "eslint-config-airbnb": "^16.1.0",
+    "mocha": "^5.2.0"
   }
 }
