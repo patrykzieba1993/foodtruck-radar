@@ -1,0 +1,15 @@
+{
+  "name": "foodtruck-radar-api",
+  "version": "1.0.0",
+  "description": "Rest API for foodtruck radar app",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "8.9.3"
+  },
+  "author": "patrykzieba1993",
+  "license": "UNLICENSED",
+  "dependencies": {},
+  "devDependencies": {}
+}
