@@ -9,8 +9,8 @@
     "migrate-database": "knex migrate:latest",
     "migrate-make": "knex migrate:make",
     "start": "node index.js",
-    "test": "export NODE_ENV=test CACHE_ENABLED=false && npm run lint:fix && mocha --recursive",
-    "test:nolint": "export NODE_ENV=test CACHE_ENABLED=false && mocha --recursive"
+    "test": "export NODE_ENV=test CACHE_ENABLED=false && npm run lint:fix && mocha --recursive --exit",
+    "test:nolint": "export NODE_ENV=test CACHE_ENABLED=false && mocha --recursive --exit"
   },
   "engines": {
     "node": "8.9.3"

@@ -56,9 +56,11 @@ module.exports = (app, controller) => {
    */
   app.get('/restaurants', validate({
     query: {
-      limit: Joi.number().integer().optional().description('Limit'),
-      offset: Joi.number().integer().optional().description('Offset'),
-      order: Joi.string().optional().description('Order'),
+      limit: Joi.number().integer().min(0).optional()
+        .description('Limit'),
+      offset: Joi.number().integer().min(0).optional()
+        .description('Offset'),
+      order: Joi.string().regex(/^\w+\s\w+$/).optional().description('Order'),
     },
   }), getRestaurants);
 };
