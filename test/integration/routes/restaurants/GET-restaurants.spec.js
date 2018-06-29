@@ -38,7 +38,7 @@ describe('GET restaurants', () => {
         assert.equal(thirdItem.address.number, 3);
       }));
 
-  it('should return 200 HTTP status and limited data based on limit query param', () => {
+  it('should return 200 HTTP status and limited data based on limit query param', () =>
     request(server)
       .get(`${url}?limit=2`)
       .expect(200)
@@ -48,14 +48,13 @@ describe('GET restaurants', () => {
         const [firstItem, secondItem] = body;
 
         assert.equal(firstItem.name, 'Test 1');
-        assert.equal(secondItem.address.number, 1);
+        assert.equal(firstItem.address.number, 1);
 
         assert.equal(secondItem.name, 'Test 2');
         assert.equal(secondItem.address.number, 2);
-      });
-  });
+      }));
 
-  it('should return 200 HTTP status code and sorted data based on order query param', () => {
+  it('should return 200 HTTP status code and sorted data based on order query param', () =>
     request(server)
       .get(`${url}?order=streetNumber DESC`)
       .expect(200)
@@ -65,17 +64,16 @@ describe('GET restaurants', () => {
         const [firstItem, secondItem, thirdItem] = body;
 
         assert.equal(firstItem.name, 'Test 3');
-        assert.equal(secondItem.address.number, 3);
+        assert.equal(firstItem.address.number, 3);
 
         assert.equal(secondItem.name, 'Test 2');
         assert.equal(secondItem.address.number, 2);
 
         assert.equal(thirdItem.name, 'Test 1');
-        assert.equal(secondItem.address.number, 1);
-      });
-  });
+        assert.equal(thirdItem.address.number, 1);
+      }));
 
-  it('should return 200 HTTP status code and custom data based on offset query param', () => {
+  it('should return 200 HTTP status code and custom data based on offset query param', () =>
     request(server)
       .get(`${url}?offset=2`)
       .expect(200)
@@ -86,10 +84,9 @@ describe('GET restaurants', () => {
 
         assert.equal(firstItem.name, 'Test 3');
         assert.equal(firstItem.address.number, 3);
-      });
-  });
+      }));
 
-  it('should return 200 HTTP status code and custom data based on all available query params combined', () => {
+  it('should return 200 HTTP status code and custom data based on all available query params combined', () =>
     request(server)
       .get(`${url}?order=id DESC&limit=1&offset=1`)
       .expect(200)
@@ -100,8 +97,7 @@ describe('GET restaurants', () => {
 
         assert.equal(firstItem.name, 'Test 2');
         assert.equal(firstItem.address.number, 2);
-      });
-  });
+      }));
 
   it('should return 400 HTTP status code when limit is not a natural number', () =>
     request(server)
@@ -118,9 +114,8 @@ describe('GET restaurants', () => {
       .get(`${url}?order=bla bla bla`)
       .expect(400));
 
-  it('should return 500 HTTP status code when wrong order query param provided', () => {
+  it('should return 500 HTTP status code when wrong order query param provided', () =>
     request(server)
       .get(`${url}?order=noColumnFound DESC`)
-      .expect(500);
-  });
+      .expect(500));
 });
