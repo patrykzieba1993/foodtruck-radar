@@ -50,4 +50,14 @@ module.exports = {
       directory: path.join(__dirname, '/src/db/migrations'),
     },
   },
+  heroku: {
+    client: 'pg',
+    connection: 'postgres://bhlmnvnkscsobi:1c440e830f525e73324037f98293c8336387de4b790efd39a62758d797dbe935@ec2-54-217-205-90.eu-west-1.compute.amazonaws.com:5432/da6r35oha9p679',
+    migrations: {
+      directory: path.join(__dirname, '/src/db/migrations'),
+    },
+    seeds: {
+      directory: path.join(__dirname, '/src/db/seeds'),
+    },
+  }
 };
