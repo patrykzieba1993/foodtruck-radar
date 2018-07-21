@@ -6,7 +6,7 @@ module.exports = () => {
       id,
       name,
       rating,
-      imageUrl,
+      logoUrl: imageUrl,
       location: {
         latitude,
         longitude,
