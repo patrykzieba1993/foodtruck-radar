@@ -4,13 +4,13 @@ module.exports = (repository, decorators, errorHandler) => {
   const getRestaurants = async (req, res) => {
     const {
       query: {
-        limit, offset, order, query,
+        limit, offset, order, query, ids,
       },
     } = req;
 
     try {
       const result = await repository.getAll({
-        limit, offset, order, query,
+        limit, offset, order, query, ids,
       });
 
       res.send(getRestaurantsDecorator.prepare(result));

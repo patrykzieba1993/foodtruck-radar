@@ -4,23 +4,38 @@ module.exports = (db) => {
   const embraceWithQuotes = value => (value[0] === '"' && value[value.length - 1] === '"' ? value : `"${value}"`);
 
   const getAll = ({
-    limit, offset, query, order = 'id ASC',
+    limit, offset, query, ids, order = 'id ASC',
   }) => {
-    const orderStrategy = `${embraceWithQuotes(order.split(' ')[0])} ${order.split(' ')[1]}`;
+    const orderStrategy = `${embraceWithQuotes('Restaurants')}.${embraceWithQuotes(order.split(' ')[0])} ${order.split(' ')[1]}`;
 
-    return db(restaurants).orderByRaw(orderStrategy).modify((q) => {
-      if (!isNaN(limit)) {
-        q.limit(limit);
-      }
+    return db(restaurants)
+      .select([
+        'Restaurants.*',
+        'Socials.url as socialUrl', 'Socials.rating',
+        'SocialTypes.name as socialType', 'SocialTypes.maxRating',
+        'OpeningHoursRules.opens', 'OpeningHoursRules.closes',
+      ])
+      .join('Socials', 'Restaurants.id', 'Socials.restaurantId')
+      .join('SocialTypes', 'SocialTypes.id', 'Socials.socialTypeId')
+      .join('OpeningHoursRules', 'Restaurants.id', 'OpeningHoursRules.restaurantId')
+      .orderByRaw(orderStrategy)
+      .modify((q) => {
+        if (!isNaN(limit)) {
+          q.limit(limit);
+        }
 
-      if (!isNaN(offset)) {
-        q.offset(offset);
-      }
+        if (!isNaN(offset)) {
+          q.offset(offset);
+        }
 
-      if (query) {
-        q.whereRaw(`LOWER("name") like '%${query.toLowerCase()}%'`);
-      }
-    });
+        if (query) {
+          q.whereRaw(`LOWER("Restaurants"."name") like '%${query.toLowerCase()}%'`);
+        }
+
+        if (Array.isArray(ids)) {
+          q.whereIn('Restaurants.id', ids);
+        }
+      });
   };
 
   return { getAll };

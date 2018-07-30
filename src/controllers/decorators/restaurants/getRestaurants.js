@@ -1,13 +1,28 @@
 module.exports = () => {
   const prepare = (restaurants = []) => {
     const prepareRestaurant = (({
-      id, name, rating, imageUrl, latitude, longitude, street, streetNumber, city, isOpen,
+      id, name, imageUrl, latitude, longitude, street, streetNumber, city, isOpen,
+      phone, website, latestUpdates, socialUrl, rating, socialType, maxRating, opens, closes,
     }) => ({
       id,
       name,
-      rating,
-      logoUrl: imageUrl,
-      location: {
+      social: [
+        {
+          type: socialType,
+          url: socialUrl,
+          rating,
+          maxRating,
+        },
+      ], // what if more...
+      contact: {
+        phone,
+        website,
+      },
+      logo: {
+        small: imageUrl, // convert
+        big: imageUrl,
+      },
+      coordinates: {
         latitude,
         longitude,
       },
@@ -15,6 +30,11 @@ module.exports = () => {
         street,
         number: streetNumber,
         city,
+      },
+      latestUpdates,
+      openingHours: {
+        opens,
+        closes,
       },
       isOpen,
     }));

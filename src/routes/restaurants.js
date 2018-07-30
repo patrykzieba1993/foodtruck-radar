@@ -61,6 +61,7 @@ module.exports = (app, controller) => {
       offset: Joi.number().integer().min(0).optional()
         .description('Offset'),
       order: Joi.string().regex(/^\w+\s\w+$/).optional().description('Order'),
+      ids: Joi.array().items(Joi.number().integer()).optional().description('Restaurants ids'),
     },
   }), getRestaurants);
 
@@ -97,6 +98,11 @@ module.exports = (app, controller) => {
    *         required: false
    *         type: integer
    *         example: name desc
+   *       - name: ids
+   *         description: Array of restaurants ids.
+   *         required: false
+   *         type: array
+   *         example: [1,2,30,200]
    *     responses:
    *       200:
    *         description: Array of objects containing info about found restaurants.

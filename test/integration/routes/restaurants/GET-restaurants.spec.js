@@ -86,6 +86,19 @@ describe('GET restaurants', () => {
         assert.equal(firstItem.address.number, 3);
       }));
 
+  it('should return 200 HTTP status code and custom data based on ids query param', () =>
+    request(server)
+      .get(`${url}?ids=[1,2]`)
+      .expect(200)
+      .expect(({ body }) => {
+        assert.equal(body.length, 2);
+
+        const [firstItem, secondItem] = body;
+
+        assert.equal(firstItem.id, 1);
+        assert.equal(secondItem.id, 2);
+      }));
+
   it('should return 200 HTTP status code and custom data based on all available query params combined', () =>
     request(server)
       .get(`${url}?order=id DESC&limit=1&offset=1`)
