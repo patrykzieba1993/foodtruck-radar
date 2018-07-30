@@ -31,6 +31,12 @@ module.exports = (app, controller) => {
    *         required: false
    *         type: integer
    *         example: name desc
+   *       - name: ids
+   *         in: query
+   *         description: Array of restaurants ids (example - [1,2,30,200])
+   *         required: false
+   *         type: array
+   *         example: [1,2,30,200]
    *     responses:
    *       200:
    *         description: Array of objects containing info about specific restaurants.
@@ -39,9 +45,23 @@ module.exports = (app, controller) => {
    *           {
    *             "id": 1,
    *             "name": "Test name",
-   *             "rating": 4.5,
-   *             "imageUrl": "https://fake.png",
-   *             "location": {
+   *             "social": [
+   *               {
+   *                 "type": "Test",
+   *                 "url": "https://fake.url",
+   *                 "rating": 2.5,
+   *                 "maxRating": 5
+   *               }
+   *             ],
+   *             "contact": {
+   *               "phone": "123-456-789",
+   *               "website": "https://fake.url"
+   *             },
+   *             "logo": {
+   *               "small": "https://fake.png",
+   *               "big": "https://fake.png"
+   *             },
+   *             "coordinates": {
    *               "latitude": 50.0918654,
    *               "longitude": 19.9474365
    *             },
@@ -49,6 +69,11 @@ module.exports = (app, controller) => {
    *               "street": "Test street",
    *               "number": 5,
    *               "city": "Test city"
+   *             },
+   *             "latestUpdates": "Test",
+   *             "openingHours": {
+   *               "opens": "10:00",
+   *               "closes": "15:00"
    *             },
    *             "isOpen": true
    *           }
@@ -98,11 +123,6 @@ module.exports = (app, controller) => {
    *         required: false
    *         type: integer
    *         example: name desc
-   *       - name: ids
-   *         description: Array of restaurants ids.
-   *         required: false
-   *         type: array
-   *         example: [1,2,30,200]
    *     responses:
    *       200:
    *         description: Array of objects containing info about found restaurants.
@@ -111,9 +131,23 @@ module.exports = (app, controller) => {
    *           {
    *             "id": 1,
    *             "name": "Test name",
-   *             "rating": 4.5,
-   *             "imageUrl": "https://fake.png",
-   *             "location": {
+   *             "social": [
+   *               {
+   *                 "type": "Test",
+   *                 "url": "https://fake.url",
+   *                 "rating": 2.5,
+   *                 "maxRating": 5
+   *               }
+   *             ],
+   *             "contact": {
+   *               "phone": "123-456-789",
+   *               "website": "https://fake.url"
+   *             },
+   *             "logo": {
+   *               "small": "https://fake.png",
+   *               "big": "https://fake.png"
+   *             },
+   *             "coordinates": {
    *               "latitude": 50.0918654,
    *               "longitude": 19.9474365
    *             },
@@ -121,6 +155,11 @@ module.exports = (app, controller) => {
    *               "street": "Test street",
    *               "number": 5,
    *               "city": "Test city"
+   *             },
+   *             "latestUpdates": "Test",
+   *             "openingHours": {
+   *               "opens": "10:00",
+   *               "closes": "15:00"
    *             },
    *             "isOpen": true
    *           }
