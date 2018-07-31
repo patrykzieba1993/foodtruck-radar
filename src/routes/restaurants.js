@@ -45,7 +45,7 @@ module.exports = (app, controller) => {
    *           {
    *             "id": 1,
    *             "name": "Test name",
-   *             "social": [
+   *             "socials": [
    *               {
    *                 "type": "Test",
    *                 "url": "https://fake.url",
@@ -131,7 +131,7 @@ module.exports = (app, controller) => {
    *           {
    *             "id": 1,
    *             "name": "Test name",
-   *             "social": [
+   *             "socials": [
    *               {
    *                 "type": "Test",
    *                 "url": "https://fake.url",

@@ -6,7 +6,7 @@ module.exports = () => {
     }) => ({
       id,
       name,
-      social: [
+      socials: [
         {
           type: socialType,
           url: socialUrl,
