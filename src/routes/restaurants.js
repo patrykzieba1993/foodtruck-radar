@@ -167,7 +167,7 @@ module.exports = (app, controller) => {
    */
   app.get('/search/restaurants', validate({
     query: {
-      query: Joi.string().required()
+      query: Joi.string().required().allow([''])
         .description('Search query'),
       limit: Joi.number().integer().min(0).optional()
         .description('Limit'),

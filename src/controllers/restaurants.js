@@ -8,14 +8,18 @@ module.exports = (repository, decorators, errorHandler) => {
       },
     } = req;
 
+    if (query === '') {
+      return res.send([]);
+    }
+
     try {
       const result = await repository.getAll({
         limit, offset, order, query, ids,
       });
 
-      res.send(getRestaurantsDecorator.prepare(result));
+      return res.send(getRestaurantsDecorator.prepare(result));
     } catch (e) {
-      errorHandler.handleCustom(e, res);
+      return errorHandler.handleCustom(e, res);
     }
   };
 
